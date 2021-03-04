@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "predeploy": "npm run build && npm run export",
+    "predeploy": "npm run build && npm run export && cd ./out && copy NUL .nojekyll && cd ../",
     "deploy": "gh-pages -d out",
     "action": "npm run build && npm run export && cd ./out && : > .nojekyll && cd ../"
   },
