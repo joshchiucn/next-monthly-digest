@@ -2,11 +2,12 @@ name: Build and Deploy
 
 on:
   push:
-    branch: [ main ]
+    branches: [ main ]
 
 jobs:
-  runs-on: ubuntu-latest
-  steps: 
-    - uses: actions/checkout@v2
-    - name: build
-      run: npm run action
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v2
+      - name: build
+        run: npm run action
