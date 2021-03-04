@@ -36,6 +36,7 @@ npm run deploy
 
 ## Github actions
 With github actions ❤, this project is deployed automatically on push.
+
 To learn more, look at github actions [config file](./.github/workflows/main.yml)
 
 
