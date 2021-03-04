@@ -8,9 +8,9 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "predeploy": "npm run build && npm run export && cd ./out && copy NUL .nojekyll && cd ../",
-    "upload": "gh-pages -d out -t true",
-    "deploy": "gh-pages -d out -t true"
+    "predeploy": "npm run build && npm run export",
+    "deploy": "gh-pages -d out",
+    "action": "npm run build && npm run export && cd ./out && : > .nojekyll && cd ../"
   },
   "dependencies": {
     "next": "10.0.7",
