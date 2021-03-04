@@ -6,10 +6,10 @@ interface TabItem {
 const tabs: TabItem[] = [
   {
     name: '文章',
-    url: '/'
+    url: './'
   }, {
     name: '站点',
-    url: '/sites'
+    url: './sites'
   }
 ]
 const Tab: FunctionComponent = () => {
