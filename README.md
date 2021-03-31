@@ -1,4 +1,7 @@
 # Frontend articles & sites (my technique playground actually😄)
+
+## vercel site 
+https://monthly-digest.vercel.app/
 ## tech stack
   - nextjs
   - tailwind css
