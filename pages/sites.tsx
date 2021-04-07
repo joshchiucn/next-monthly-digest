@@ -17,7 +17,7 @@ const Sites: FunctionComponent<{ data: SiteItem[] }> = ({ data }) => {
 }
 
 export async function getServerSideProps(): Promise<{ props: { data: SiteItem[] } }> {
-  const data = await fetch(`${process.env.DOMAIN}/api/sites`).then(res => res.json())
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/sites`).then(res => res.json())
   return {
     props: {
       data
