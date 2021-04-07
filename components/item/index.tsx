@@ -6,7 +6,7 @@ interface ItemProps {
 const Item:FunctionComponent<ItemProps> = (props) => {
   const { data } = props
   return (
-    <div className="item text-left py-2 mb-3">
+    <div className="item text-left p-4">
       <a href={data.link}><h5 className="item_title text-gray-900 hover:text-red-600 font-bold text-xl">{ data.name }</h5></a>
       {
         data.description ? <p className=" mt-2">{data.description}</p> : null
