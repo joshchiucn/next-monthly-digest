@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { SiteItem } from '../types/index'
+import { GetStaticProps } from 'next'
 
 const Sites: FunctionComponent<{ data: SiteItem[] }> = ({ data }) => {
   return <div className="sites text-left">
@@ -16,12 +17,13 @@ const Sites: FunctionComponent<{ data: SiteItem[] }> = ({ data }) => {
   </div>
 }
 
-export async function getServerSideProps(): Promise<{ props: { data: SiteItem[] } }> {
+export const getStaticProps: GetStaticProps = async (): Promise<{ props: { data: SiteItem[] }, revalidate?: number }> => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/sites`).then(res => res.json())
   return {
     props: {
       data
-    }
+    },
+    revalidate: 1
   }
 }
 

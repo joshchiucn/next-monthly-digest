@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { GetStaticProps } from 'next'
 import Article from '../components/item/index'
 import { Item } from '../types/index'
 import styles from '../styles/Home.module.scss'
@@ -19,12 +20,13 @@ const Articles: FunctionComponent<{ data: Item[] }> = ({ data }) => {
   )
 }
 
-export async function getServerSideProps () {
+export const getStaticProps: GetStaticProps = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
   return {
     props: {
       data
-    }
+    },
+    revalidate: 1
   }
 }
 
