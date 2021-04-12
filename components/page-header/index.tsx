@@ -3,9 +3,9 @@ import styles from './style.module.scss'
 import Tab from '../tab/index'
 import Slogan from '../slogan/index'
 const PageHeader: FunctionComponent = () => (
-  <div className={styles['page-header']}>
+  <header className={styles['page-header']}>
     <Tab/>
     <Slogan/>
-  </div>
+  </header>
 )
 export default PageHeader

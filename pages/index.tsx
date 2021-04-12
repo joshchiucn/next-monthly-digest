@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.scss'
 
 const Articles: FunctionComponent<{ data: Item[] }> = ({ data }) => {
   return (
-    <div>
+    <main>
       <ul className={styles['month-list']}>
         {
           data.map((item, index) => (
@@ -16,7 +16,7 @@ const Articles: FunctionComponent<{ data: Item[] }> = ({ data }) => {
           ))
         }
       </ul>
-    </div>
+    </main>
   )
 }
 

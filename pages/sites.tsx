@@ -3,7 +3,7 @@ import { SiteItem } from '../types/index'
 import { GetStaticProps } from 'next'
 
 const Sites: FunctionComponent<{ data: SiteItem[] }> = ({ data }) => {
-  return <div className="sites text-left">
+  return <main className="sites text-left">
     <ul>
       {
         data.map((site, index) => (
@@ -14,7 +14,7 @@ const Sites: FunctionComponent<{ data: SiteItem[] }> = ({ data }) => {
         ))
       }
     </ul>
-  </div>
+  </main>
 }
 
 export const getStaticProps: GetStaticProps = async (): Promise<{ props: { data: SiteItem[] }, revalidate?: number }> => {
