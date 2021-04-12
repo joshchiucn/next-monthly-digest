@@ -42,5 +42,7 @@ With github actions ❤, this project is deployed automatically on push.
 
 To learn more, look at github actions [config file](./.github/workflows/main.yml)
 
-
+## TODO list
+  1. more TS coverage(WIP)
+  2. accessibility
 
