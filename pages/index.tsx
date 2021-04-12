@@ -21,7 +21,7 @@ const Articles: FunctionComponent<{ data: Item[] }> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
+  const data: Item[] = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
   return {
     props: {
       data
