@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-// TODO
 import styles from './style.module.scss'
 import Tab from '../tab/index'
 import Slogan from '../slogan/index'
