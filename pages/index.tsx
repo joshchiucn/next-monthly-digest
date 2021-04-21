@@ -22,7 +22,7 @@ const Articles: FunctionComponent<{ data: Item[], rowCount: number }> = ({ data,
     const {result} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=${page}`).then(res => res.json())
     setRows(result)
   }
-  const onClickTag = async (tag) => {
+  const onClickTag = async (tag: string) => {
     setPage(1)
     const {result, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=1&filter=${tag}+in:tags`).then(res => res.json())
     setRows(result)
