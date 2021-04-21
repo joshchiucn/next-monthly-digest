@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { Item as ArticleItem } from '../../types/index'
 interface ItemProps {
-  data: ArticleItem
+  data: ArticleItem,
+  onClickTag: any
 }
 const Item:FunctionComponent<ItemProps> = (props) => {
   const { data } = props
@@ -14,7 +15,7 @@ const Item:FunctionComponent<ItemProps> = (props) => {
       {
         data.tags ? <ul className="text-gray-500 flex mt-2 text-sm">
           分类：{
-            data.tags.split(/\s+/).map(tag => <li>{tag}</li>)
+            data.tags.split(/\s+/).map((tag, index) => <li key={index} className="text-blue-500" onClick={() => {props.onClickTag(tag)}}>{tag}</li>)
           }
         </ul> : null
       }

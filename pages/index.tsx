@@ -4,9 +4,10 @@ import Article from '../components/item/index'
 import { Item } from '../types/index'
 import Pagination from '../components/pagination'
 import styles from '../styles/Home.module.scss'
-const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, count }) => {
+const Articles: FunctionComponent<{ data: Item[], rowCount: number }> = ({ data, rowCount }) => {
   const [page, setPage] = useState(1)
   const [rows, setRows] = useState(data)
+  const [count, setCount] = useState(rowCount)
   const onClickPrev = () => {
     const newPage = page - 1
     setPage(newPage)
@@ -21,13 +22,19 @@ const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, co
     const {result} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=${page}`).then(res => res.json())
     setRows(result)
   }
+  const onClickTag = async (tag) => {
+    setPage(1)
+    const {result, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=1&filter=${tag}+in:tags`).then(res => res.json())
+    setRows(result)
+    setCount(count)
+  }
   return (
     <main>
       <ul className={styles['month-list']}>
         {
           rows.map((item, index) => (
             <li key={index} className="month">
-              <Article data={item}/>
+              <Article data={item} onClickTag={onClickTag}/>
             </li>
           ))
         }
@@ -38,11 +45,11 @@ const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, co
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const {result: data, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
+  const {result: data, count: rowCount} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
   return {
     props: {
       data,
-      count
+      rowCount
     },
     revalidate: 1
   }
