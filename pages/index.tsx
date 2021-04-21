@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { GetStaticProps } from 'next'
 import Article from '../components/item/index'
 import { Item } from '../types/index'
+import Pagination from '../components/pagination'
 import styles from '../styles/Home.module.scss'
 const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, count }) => {
   const [page, setPage] = useState(1)
@@ -16,6 +17,7 @@ const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, co
           ))
         }
       </ul>
+      <Pagination current={1} pageSize={10} total={count}></Pagination>
     </main>
   )
 }
