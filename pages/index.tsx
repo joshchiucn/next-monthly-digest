@@ -6,18 +6,33 @@ import Pagination from '../components/pagination'
 import styles from '../styles/Home.module.scss'
 const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, count }) => {
   const [page, setPage] = useState(1)
+  const [rows, setRows] = useState(data)
+  const onClickPrev = () => {
+    const newPage = page - 1
+    setPage(newPage)
+    handlePageChange(newPage)
+  }
+  const onClickNext = () => {
+    const newPage = page + 1
+    setPage(newPage)
+    handlePageChange(newPage)
+  }
+  const handlePageChange = async (page: number) => {
+    const {result} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=${page}`).then(res => res.json())
+    setRows(result)
+  }
   return (
     <main>
       <ul className={styles['month-list']}>
         {
-          data.map((item, index) => (
+          rows.map((item, index) => (
             <li key={index} className="month">
               <Article data={item}/>
             </li>
           ))
         }
       </ul>
-      <Pagination current={1} pageSize={10} total={count}></Pagination>
+      <Pagination current={page} pageSize={10} total={count} onClickPrev={onClickPrev} onClickNext={onClickNext}></Pagination>
     </main>
   )
 }
