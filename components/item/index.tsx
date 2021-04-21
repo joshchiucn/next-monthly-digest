@@ -12,9 +12,11 @@ const Item:FunctionComponent<ItemProps> = (props) => {
         data.description ? <p className=" mt-2">{data.description}</p> : null
       }
       {
-        data.tags ? <div className="item_tags text-gray-500 flex mt-2 text-sm">
-          分类：{data.tags}
-        </div> : null
+        data.tags ? <ul className="item_tags text-gray-500 flex mt-2 text-sm">
+          分类：{
+            data.tags.split(/\s+/).map(tag => <li>{tag}</li>)
+          }
+        </ul> : null
       }
       <div className="source mt-2 text-gray-500 text-sm">来源：{ data.source }</div>
     </div>

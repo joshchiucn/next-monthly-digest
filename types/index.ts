@@ -4,7 +4,7 @@ export interface Item {
   name: string,
   description: string,
   link: string,
-  tags: Tag[],
+  tags: string,
   source: string
 }
 
