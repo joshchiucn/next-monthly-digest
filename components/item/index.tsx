@@ -15,7 +15,7 @@ const Item:FunctionComponent<ItemProps> = (props) => {
       {
         data.tags ? <ul className="text-gray-500 flex mt-2 text-sm">
           分类：{
-            data.tags.split(/\s+/).map((tag, index) => <li key={index} className="text-blue-500 mr-2" onClick={() => {props.onClickTag(tag)}}>{tag}</li>)
+            data.tags.split(/\s+/).map((tag, index) => <li key={index} className="text-blue-500 mr-2 cursor-pointer" onClick={() => {props.onClickTag(tag)}}>{tag}</li>)
           }
         </ul> : null
       }
