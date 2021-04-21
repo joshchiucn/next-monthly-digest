@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { GetStaticProps } from 'next'
 import Article from '../components/item/index'
 import { Item } from '../types/index'
 import styles from '../styles/Home.module.scss'
-
-const Articles: FunctionComponent<{ data: Item[] }> = ({ data }) => {
+const Articles: FunctionComponent<{ data: Item[], count: number }> = ({ data, count }) => {
+  const [page, setPage] = useState(1)
   return (
     <main>
       <ul className={styles['month-list']}>
@@ -21,10 +21,11 @@ const Articles: FunctionComponent<{ data: Item[] }> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data: Item[] = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
+  const {result: data, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
   return {
     props: {
-      data
+      data,
+      count
     },
     revalidate: 1
   }
