@@ -6,19 +6,19 @@ interface ItemProps {
 const Item:FunctionComponent<ItemProps> = (props) => {
   const { data } = props
   return (
-    <div className="item text-left p-4">
-      <a href={data.link}><h3 className="item_title text-gray-900 hover:text-red-600 font-bold text-xl">{ data.name }</h3></a>
+    <div className="text-left p-4">
+      <a href={data.link}><h3 className="text-gray-900 hover:text-red-600 font-bold text-xl">{ data.name }</h3></a>
       {
-        data.description ? <p className=" mt-2">{data.description}</p> : null
+        data.description ? <p className="mt-2">{data.description}</p> : null
       }
       {
-        data.tags ? <ul className="item_tags text-gray-500 flex mt-2 text-sm">
+        data.tags ? <ul className="text-gray-500 flex mt-2 text-sm">
           分类：{
             data.tags.split(/\s+/).map(tag => <li>{tag}</li>)
           }
         </ul> : null
       }
-      <div className="source mt-2 text-gray-500 text-sm">来源：{ data.source }</div>
+      <div className="mt-2 text-gray-500 text-sm">来源：{ data.source }</div>
     </div>
   )
 }
