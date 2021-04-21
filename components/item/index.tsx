@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { Item as ArticleItem } from '../../types/index'
 interface ItemProps {
   data: ArticleItem,
-  onClickTag: any
+  onClickTag: any,
+  onClickSource: any
 }
 const Item:FunctionComponent<ItemProps> = (props) => {
   const { data } = props
@@ -19,7 +20,7 @@ const Item:FunctionComponent<ItemProps> = (props) => {
           }
         </ul> : null
       }
-      <div className="mt-2 text-gray-500 text-sm">来源：{ data.source }</div>
+      <div className="mt-2 text-gray-500 text-sm">来源：<span className="text-blue-500 cursor-pointer" onClick={() => {props.onClickSource(data.source)}}>{ data.source }</span></div>
     </div>
   )
 }

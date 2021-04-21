@@ -28,13 +28,19 @@ const Articles: FunctionComponent<{ data: Item[], rowCount: number }> = ({ data,
     setRows(result)
     setCount(count)
   }
+  const onClickSource = async (source: string) => {
+    setPage(1)
+    const {result, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=1&filter=${source}+in:source`).then(res => res.json())
+    setRows(result)
+    setCount(count)
+  }
   return (
     <main>
       <ul className={styles['month-list']}>
         {
           rows.map((item, index) => (
             <li key={index} className="month">
-              <Article data={item} onClickTag={onClickTag}/>
+              <Article data={item} onClickTag={onClickTag} onClickSource={onClickSource}/>
             </li>
           ))
         }
