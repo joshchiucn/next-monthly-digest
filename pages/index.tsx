@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { GetStaticProps } from 'next'
+import { getArticles } from '../request'
 import Article from '../components/item/index'
 import { Item } from '../types/index'
 import Pagination from '../components/pagination'
@@ -19,18 +20,26 @@ const Articles: FunctionComponent<{ data: Item[], rowCount: number }> = ({ data,
     handlePageChange(newPage)
   }
   const handlePageChange = async (page: number) => {
-    const {result} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=${page}`).then(res => res.json())
+    const {result} = await getArticles({
+      page
+    })
     setRows(result)
   }
   const onClickTag = async (tag: string) => {
     setPage(1)
-    const {result, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=1&filter=${tag}+in:tags`).then(res => res.json())
+    const {result, count} = await getArticles({
+      page: 1,
+      filter: `${tag} in:tags`
+    })
     setRows(result)
     setCount(count)
   }
   const onClickSource = async (source: string) => {
     setPage(1)
-    const {result, count} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles?page=1&filter=${source}+in:source`).then(res => res.json())
+    const {result, count} = await getArticles({
+      page: 1,
+      filter: `${source} in:source`
+    })
     setRows(result)
     setCount(count)
   }
@@ -51,7 +60,7 @@ const Articles: FunctionComponent<{ data: Item[], rowCount: number }> = ({ data,
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const {result: data, count: rowCount} = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/articles`).then(res => res.json())
+  const {result: data, count: rowCount} = await getArticles()
   return {
     props: {
       data,

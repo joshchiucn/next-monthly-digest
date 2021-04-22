@@ -13,6 +13,7 @@
     "action": "npm run build && npm run export && cd ./out && : > .nojekyll && cd ../"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",

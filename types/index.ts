@@ -28,3 +28,15 @@ export interface Donation {
 export interface executable {
   (): void
 }
+
+export interface ArticleResponse {
+  result: Item[],
+  count: number
+}
+
+export interface SiteResponse {
+  status: number,
+  data: {
+    result: SiteItem[]
+  }
+}
