@@ -12,9 +12,14 @@ const tabs: TabItem[] = [
     url: './sites'
   }
 ]
-const Tab: FunctionComponent = () => {
+interface Props {
+  onSearchChange: () => void,
+  onClickSearch: () => void
+}
+
+const Tab: FunctionComponent<Props> = (props) => {
   return (
-    <div className="tabs py-2">
+    <div className="tabs py-2 md:flex md:items-center md:justify-between md:pr-6">
       <ul className="tabs-list flex px-5">
         {
           tabs.map(item => (
@@ -24,6 +29,12 @@ const Tab: FunctionComponent = () => {
           ))
         }
       </ul>
+      <section className="flex items-center">
+        <input className="ml-5 mt-2 text-sm w-9/12 leading-8 pl-2 rounded-md font-sans" type="text" name="" id="" placeholder="搜索 如 js in:tag" onChange={props.onSearchChange}/>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="#fff" onClick={props.onClickSearch}>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </section>
     </div>
   )
 }
