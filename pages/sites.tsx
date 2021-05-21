@@ -1,20 +1,23 @@
 import React, { FunctionComponent } from 'react'
 import { SiteItem } from '../types/index'
 import { GetStaticProps } from 'next'
-
+import PageHeader from '../components/page-header'
 const Sites: FunctionComponent<{ data: SiteItem[] }> = ({ data }) => {
-  return <main className="sites text-left">
-    <ul>
-      {
-        data.map((site, index) => (
-          <li key={index} className="p-4">
-            <a href={site.link} className="text-gray-900 hover:text-red-600 font-bold text-xl">{site.name}</a>
-            <p className="mt-2 text-gray-500 text-sm">{site.description}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </main>
+  return <>
+    <PageHeader/>
+    <main className="sites text-left">
+      <ul>
+        {
+          data.map((site, index) => (
+            <li key={index} className="p-4">
+              <a href={site.link} className="text-gray-900 hover:text-red-600 font-bold text-xl">{site.name}</a>
+              <p className="mt-2 text-gray-500 text-sm">{site.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </>
 }
 
 export const getStaticProps: GetStaticProps = async (): Promise<{ props: { data: SiteItem[] }, revalidate?: number }> => {

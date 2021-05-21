@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import { GetStaticProps } from 'next'
 import { getArticles } from '../request'
+import PageHeader from '../components/page-header'
 import Article from '../components/item/index'
 import { Item } from '../types/index'
 import Pagination from '../components/pagination'
@@ -44,18 +45,21 @@ const Articles: FunctionComponent<{ data: Item[], rowCount: number }> = ({ data,
     setCount(count)
   }
   return (
-    <main>
-      <ul className={styles['month-list']}>
-        {
-          rows.map((item, index) => (
-            <li key={index} className="month">
-              <Article data={item} onClickTag={onClickTag} onClickSource={onClickSource}/>
-            </li>
-          ))
-        }
-      </ul>
-      <Pagination current={page} pageSize={10} total={count} onClickPrev={onClickPrev} onClickNext={onClickNext}></Pagination>
-    </main>
+    <>
+      <PageHeader/>
+      <main>
+        <ul className={styles['month-list']}>
+          {
+            rows.map((item, index) => (
+              <li key={index} className="month">
+                <Article data={item} onClickTag={onClickTag} onClickSource={onClickSource}/>
+              </li>
+            ))
+          }
+        </ul>
+        <Pagination current={page} pageSize={10} total={count} onClickPrev={onClickPrev} onClickNext={onClickNext}></Pagination>
+      </main>
+    </>
   )
 }
 

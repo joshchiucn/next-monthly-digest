@@ -10,7 +10,10 @@ class MyDocument extends Document {
   render () {
     return (
       <Html lang="zh-CN">
-        <Head></Head>
+        <Head>
+          <title>文章收藏 - next</title>
+          <link rel="icon" href="./favicon.ico"/>
+        </Head>
         <body>
           <Main></Main>
           <NextScript></NextScript>

@@ -4,7 +4,7 @@ import Tab from '../tab/index'
 import Slogan from '../slogan/index'
 const PageHeader: FunctionComponent = () => (
   <header className={styles['page-header']}>
-    <Tab/>
+    <Tab onSearchChange={() => {}} onClickSearch={() => {}}/>
     <Slogan/>
   </header>
 )
