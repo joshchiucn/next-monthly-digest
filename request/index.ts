@@ -10,5 +10,5 @@ export function getArticles (params = {}): Promise<ArticleResponse> {
 export function getSites (params = {}): Promise<SiteResponse> {
   return axios.get(`${process.env.NEXT_PUBLIC_API_BASE}/api/sites`, {
     params
-  })
+  }).then(res => res.data)
 }

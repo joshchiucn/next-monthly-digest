@@ -35,8 +35,6 @@ export interface ArticleResponse {
 }
 
 export interface SiteResponse {
-  status: number,
-  data: {
-    result: SiteItem[]
-  }
+  result: SiteItem[],
+  count: number
 }
