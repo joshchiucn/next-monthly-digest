@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import "tailwindcss/tailwind.css"
 import { AppProps } from 'next/app'
-import { Head } from 'next/document'
+import Head from 'next/head'
 function MyApp({ Component, pageProps }:AppProps) {
   return <div className="App max-w-3xl mx-auto pb-6">
     <Head>
