@@ -21,7 +21,7 @@ interface Props {
 const Tab: FunctionComponent<Props> = (props) => {
   return (
     <div className="tabs py-2 md:flex md:items-center md:justify-between md:pr-6">
-      <ul className="tabs-list flex px-5">
+      <ul className="tabs-list flex px-5" role="nav">
         {
           tabs.map(item => (
             <li key={item.name} className="tabs-item py-2 px-5 mr-2 rounded text-white font-bold text-xl hover:bg-gray-300 hover:bg-opacity-50 active:bg-gray-300 active:bg-opacity-50">
